@@ -16,9 +16,9 @@ Aplicação: Avaliar a exposição solar da planta. Pode ser usado para ajustar 
 1.5. Módulo RFID MFRC522
 Medições: Leitura de tags RFID.
 Aplicação: Identificação e controle de acesso ao sistema, como registrar quando o sistema é ativado/desativado ou acesso ao sistema por usuários autorizados.
+
 2. Controle e Atuação (Atuadores)
 Os atuadores são responsáveis por realizar ações físicas no sistema, como ligar ou desligar dispositivos com base nos dados coletados ou comandos manuais.
-
 2.1. MINI BOMBA DE ÁGUA
 Comando: Ligar/desligar a bomba de água.
 Aplicação: Irrigação automática do solo quando a umidade estiver abaixo de um certo nível.
@@ -31,9 +31,9 @@ Aplicação: Mostrar dados como temperatura, umidade, status do sistema, ou coma
 2.4. Buzzer Ativo 5V
 Comando: Emitir sinal sonoro.
 Aplicação: Alerta para erros no sistema, baixa umidade no solo, ou qualquer outro evento crítico.
+
 3. Possíveis Montagens e Funcionalidades
 Com os componentes e sensores listados, você pode implementar as seguintes funcionalidades:
-
 3.1. Sistema de Irrigação Inteligente
 Descrição: Usando o sensor de umidade do solo, o ESP32 aciona a bomba de água automaticamente quando o solo estiver seco, garantindo uma irrigação eficiente.
 Componentes: Sensor de umidade do solo, bomba de água, relé.
