@@ -1,4 +1,4 @@
-# Apresentação do Projeto de Monitoramento de Culturas
+# Projeto de Monitoramento de Culturas 🌾
 
 ## Objetivo do Projeto
 
