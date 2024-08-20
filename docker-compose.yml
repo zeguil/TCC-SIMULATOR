@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - mqtt_net
+
+  simulator:
+    build:
+      context: ./esp32
+      dockerfile: Dockerfile
+    container_name: esp32_simulator
+    depends_on:
+      - mosquitto
+    networks:
+      - mqtt_net
+
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: mqtt_bot
+    depends_on:
+      - mosquitto
+      - api
+    networks:
+      - mqtt_net
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api_server
+    ports:
+      - "8000:8000"
+    networks:
+      - mqtt_net
+
+networks:
+  mqtt_net:
+    driver: bridge
+
+volumes:
+  mosquitto_data:
+  mosquitto_log:
