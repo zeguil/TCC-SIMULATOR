@@ -1,0 +1,48 @@
+1. Monitoramento (Sensores)
+Os sensores permitem coletar dados do ambiente, solo, e da planta em tempo real. Esses dados podem ser enviados ao servidor via MQTT e exibidos em um dashboard ou aplicativo mobile.
+
+1.1. Sensor de Umidade e Temperatura DHT11
+Medições: Temperatura do ambiente e umidade do ar.
+Aplicação: Monitorar as condições climáticas ao redor da planta.
+1.2. Módulo Sensor de Umidade de Solo
+Medições: Umidade do solo.
+Aplicação: Verificar se o solo está seco ou úmido, determinando a necessidade de irrigação.
+1.3. Módulo Sensor de Chuva
+Medições: Presença de chuva.
+Aplicação: Detectar chuva para interromper a irrigação automática quando estiver chovendo.
+1.4. Sensor de Luz LDR
+Medições: Intensidade da luz ambiente.
+Aplicação: Avaliar a exposição solar da planta. Pode ser usado para ajustar a iluminação artificial, se necessário.
+1.5. Módulo RFID MFRC522
+Medições: Leitura de tags RFID.
+Aplicação: Identificação e controle de acesso ao sistema, como registrar quando o sistema é ativado/desativado ou acesso ao sistema por usuários autorizados.
+2. Controle e Atuação (Atuadores)
+Os atuadores são responsáveis por realizar ações físicas no sistema, como ligar ou desligar dispositivos com base nos dados coletados ou comandos manuais.
+
+2.1. MINI BOMBA DE ÁGUA
+Comando: Ligar/desligar a bomba de água.
+Aplicação: Irrigação automática do solo quando a umidade estiver abaixo de um certo nível.
+2.2. Módulo Relé 5V 2 Canais
+Comando: Controlar até dois dispositivos elétricos (como a bomba de água e outro dispositivo, como uma válvula ou iluminação).
+Aplicação: Acionar a bomba de água, lâmpadas de cultivo, ou qualquer outro dispositivo elétrico necessário.
+2.3. Display LCD 16×2 c/ Módulo I2C Integrado
+Comando: Exibir informações em tempo real.
+Aplicação: Mostrar dados como temperatura, umidade, status do sistema, ou comandos recebidos diretamente no local.
+2.4. Buzzer Ativo 5V
+Comando: Emitir sinal sonoro.
+Aplicação: Alerta para erros no sistema, baixa umidade no solo, ou qualquer outro evento crítico.
+3. Possíveis Montagens e Funcionalidades
+Com os componentes e sensores listados, você pode implementar as seguintes funcionalidades:
+
+3.1. Sistema de Irrigação Inteligente
+Descrição: Usando o sensor de umidade do solo, o ESP32 aciona a bomba de água automaticamente quando o solo estiver seco, garantindo uma irrigação eficiente.
+Componentes: Sensor de umidade do solo, bomba de água, relé.
+3.2. Monitoramento Climático e da Planta
+Descrição: Monitore temperatura, umidade do ar, e presença de chuva para ajustar o sistema de irrigação ou gerar alertas.
+Componentes: DHT11, sensor de chuva, LDR.
+3.3. Interface Local com Feedback
+Descrição: Exiba os dados coletados e status do sistema no display LCD 16×2, e use o buzzer para alertas.
+Componentes: Display LCD 16×2, buzzer.
+3.4. Automação e Controle Remoto
+Descrição: Use o sistema MQTT para enviar comandos ao ESP32, como ligar/desligar a bomba de água ou acionar um alarme sonoro, e receba dados monitorados em tempo real.
+Componentes: Todos os sensores e atuadores conectados via relé e controlados remotamente.
