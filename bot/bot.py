@@ -15,12 +15,14 @@ def on_message(client, userdata, message):
     payload = message.payload.decode('utf-8')
     print(f"Mensagem recebida no tópico {message.topic}: {payload}")
     
-    # Enviar os dados para a API
+    # Tenta enviar os dados para a API
     try:
-        response = requests.post(api_url, json={
-            'topic': message.topic,
-            'data': payload
-        })
+        # Converte a string JSON recebida de volta para um dicionário Python
+        data = json.loads(payload)
+
+        # Envia os dados para a API
+        response = requests.post(api_url, json=data)
+        
         if response.status_code == 200:
             print(f"Dados enviados com sucesso para a API: {response.text}")
         else:
@@ -44,14 +46,9 @@ client.on_message = on_message
 # Conectar ao broker MQTT
 client.connect(broker, port)
 
-# Inscrever-se nos tópicos
-topics = [
-    "planta1/temperatura",
-    "planta1/umidade_solo",
-    "planta1/umidade_ar"
-]
-for topic in topics:
-    client.subscribe(topic)
+# Inscrever-se no tópico único
+topic = "planta/dados"
+client.subscribe(topic)
 
 # Iniciar o loop para ouvir as mensagens
 client.loop_forever()
